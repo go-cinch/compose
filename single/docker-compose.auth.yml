@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  auth:
+    container_name: auth
+    image: ${AUTH_TAG}
+    restart: always
+    ports:
+      - '6060:6060'
+      - '6160:6160'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: '1024M'
+    networks:
+      - cinch
+    environment:
+      AUTH_DATA_DATABASE_DSN: ${AUTH_DATA_DATABASE_DSN}
+      AUTH_DATA_REDIS_DSN: ${AUTH_DATA_REDIS_DSN}
+
+networks:
+  cinch:
+    external: true
+    name: cinch
