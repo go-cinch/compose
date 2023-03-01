@@ -31,7 +31,7 @@ docker-compose --compatibility -f docker-compose.db.yml up -d redis mysql
 
 ```bash
 # 1. set tag
-# u should replace `tag` to build image uri
+# u should replace tag to build image uri
 export AUTH_TAG=tag
 
 # 2. set env
@@ -52,11 +52,11 @@ docker-compose --compatibility -f docker-compose.auth.yml up -d auth
 
 ```bash
 # 1. set tag
-# u should replace `tag` to build image uri
+# u should replace tag to build image uri
 export PC_VUE3_TAG=tag
 
 # 2. set env
-# u should replace `server_ip` to server ip address
+# u should replace server_ip to server ip address
 export LOCAL_IP=server_ip
 export NGINX_HOST=$LOCAL_IP
 export NGINX_PORT=80
@@ -71,6 +71,31 @@ docker-compose -f docker-compose.pc-vue3.yml up -d pc-vue3
 
 docker-compose -f docker-compose.pc-vue3.yml rm -sf pc-vue3
 docker-compose --compatibility -f docker-compose.pc-vue3.yml up -d pc-vue3
+```
+
+### Init pc-react
+
+```bash
+# 1. set tag
+# u should replace tag to build image uri
+export PC_REACT_TAG=tag
+
+# 2. set env
+# u should replace server_ip to server ip address
+export LOCAL_IP=server_ip
+export NGINX_HOST=$LOCAL_IP
+export NGINX_PORT=80
+export AUTH_HOST=auth
+export AUTH_PORT=6060
+# or
+source myenv
+
+# 3. run
+docker-compose -f docker-compose.pc-react.yml rm -sf pc-react
+docker-compose -f docker-compose.pc-react.yml up -d pc-react
+
+docker-compose -f docker-compose.pc-react.yml rm -sf pc-react
+docker-compose --compatibility -f docker-compose.pc-react.yml up -d pc-react
 ```
 
 ## K8S
