@@ -10,8 +10,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.50'
-          memory: '1024M'
+          cpus: '4'
+          memory: '2048M'
     networks:
       - cinch
 
@@ -39,8 +39,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.50'
-          memory: '1024M'
+          cpus: '2'
+          memory: '2048M'
     networks:
       - cinch
     volumes:
