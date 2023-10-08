@@ -15,8 +15,8 @@ services:
     networks:
       - cinch
     environment:
-      AUTH_DATA_DATABASE_DSN: ${AUTH_DATA_DATABASE_DSN}
-      AUTH_DATA_REDIS_DSN: ${AUTH_DATA_REDIS_DSN}
+      SERVICE_DATA_DATABASE_DSN: ${SERVICE_DATA_DATABASE_DSN}
+      SERVICE_DATA_REDIS_DSN: ${SERVICE_DATA_REDIS_DSN}
 
 networks:
   cinch:
