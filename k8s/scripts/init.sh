@@ -49,7 +49,7 @@ if [ "$NODE_TYPE" = "master" ]; then
     --pod-network-cidr=10.155.0.0/16 \
     --ignore-preflight-errors=Mem
   mkdir -p $HOME/.kube
-  cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  cp -f /etc/kubernetes/admin.conf $HOME/.kube/config
   chown $(id -u):$(id -g) $HOME/.kube/config
   # single node: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#control-plane-node-isolation
   # kubectl taint nodes --all node-role.kubernetes.io/control-plane-
@@ -63,7 +63,7 @@ elif [ "$NODE_TYPE" = "master.join" ]; then
     --certificate-key $JOIN_KEY \
     --ignore-preflight-errors=Mem
   mkdir -p $HOME/.kube
-  cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  cp -f /etc/kubernetes/admin.conf $HOME/.kube/config
   chown $(id -u):$(id -g) $HOME/.kube/config
 else
   kubeadm join $VIP:6443 \
@@ -72,7 +72,7 @@ else
     --token $JOIN_TOKEN \
     --discovery-token-ca-cert-hash sha256:$JOIN_HASH
   mkdir -p $HOME/.kube
-  cp -i /etc/kubernetes/kubelet.conf $HOME/.kube/config
+  cp -f /etc/kubernetes/kubelet.conf $HOME/.kube/config
   chown $(id -u):$(id -g) $HOME/.kube/config
 fi
 
